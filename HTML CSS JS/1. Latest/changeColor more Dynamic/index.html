@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalistic Dark Control</title>
+    <style>
+        /* Global Styles & Dark Theme Setup */
+        :root {
+            --color-bg-primary: #1a202c; /* Darkest background */
+            --color-bg-secondary: #2d3748; /* Card background */
+            --color-text-primary: #e2e8f0; /* Light text */
+            --color-text-secondary: #a0aec0; /* Subdued text */
+            --color-status-idle: #f6e05e; /* Yellow */
+            --color-status-running: #48bb78; /* Green */
+            --color-status-stopped: #f56565; /* Red */
+            --color-btn-start: #38a169; /* Green button */
+            --color-btn-stop: #e53e3e; /* Red button */
+            --color-btn-neutral: #4a5568; /* Gray button */
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background-color: var(--color-bg-primary);
+            color: var(--color-text-primary);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            margin: 0;
+            transition: background-color 0.5s ease-in-out; 
+        }
+
+        /* Main Card Container */
+        .control-card {
+            width: 100%;
+            max-width: 512px;
+            background-color: var(--color-bg-secondary);
+            padding: 2.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 
+                        0 10px 10px -5px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s;
+        }
+
+        @media (max-width: 639px) {
+            .control-card {
+                padding: 2rem;
+            }
+        }
+
+        .title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: var(--color-text-primary);
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--color-text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        /* Status Display */
+        #status-display {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background-color: var(--color-bg-primary);
+            border: 1px solid var(--color-btn-neutral);
+            border-radius: 0.5rem;
+            text-align: center;
+            font-size: 1.125rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        #status-text {
+            color: var(--color-status-idle);
+        }
+
+        /* Button Container & Responsiveness */
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        @media (min-width: 640px) {
+            .button-container {
+                flex-direction: row;
+            }
+        }
+
+        /* Base Button Styling */
+        .control-btn {
+            flex-grow: 1;
+            padding: 1rem 1.5rem;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 1.125rem;
+            cursor: pointer;
+            transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border 0.3s;
+            border: none;
+            outline: none;
+            color: white;
+        }
+        
+        .control-btn svg {
+            height: 1.5rem;
+            width: 1.5rem;
+            display: inline;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+        }
+
+        /* Specific Button Styles */
+        #start-btn {
+            background-color: var(--color-btn-start);
+        }
+        #start-btn:hover {
+            background-color: #48bb78;
+        }
+
+        /* Initial Stop Button Style */
+        #stop-btn {
+            background-color: var(--color-btn-stop); /* Explicit red as initial */
+        }
+        #stop-btn:hover {
+            background-color: #cc3737; 
+        }
+
+        /* Active State / Glow Effects (Needs JS to trigger) */
+        .btn-start.active {
+            box-shadow: 0 0 15px rgba(34, 197, 94, 0.7);
+        }
+
+        .btn-stop.active {
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.7);
+        }
+        
+        .status-running {
+            border-color: var(--color-status-running) !important;
+        }
+        .status-stopped {
+            border-color: var(--color-status-stopped) !important;
+        }
+
+
+        /* --- Custom Modal/Alert Styling --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85); /* Darker overlay */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: opacity 0.5s ease;
+        }
+
+        /* Class used to hide the modal by default */
+        .hidden {
+            display: none; 
+        }
+
+        .modal-content {
+            background-color: var(--color-bg-secondary);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.9);
+            text-align: center;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-status-running);
+            margin-bottom: 1rem;
+        }
+        
+        .modal-message {
+            color: var(--color-text-primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .modal-close-btn {
+            background-color: var(--color-btn-neutral);
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.15s;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .modal-close-btn:hover {
+            background-color: #616e7f;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Main Control Card -->
+    <div class="control-card">
+        
+        <h1 class="title">Color Generator</h1>
+        <p class="subtitle">Click Start to generate a new 6-digit hex code every second.</p>
+
+        <!-- Status Display -->
+        <div id="status-display">
+            Current Status: <span id="status-text">Idle</span>
+        </div>
+
+        <!-- Button Container -->
+        <div class="button-container">
+            
+            <!-- Start Button - onclick removed as requested -->
+            <button id="start-btn" class="control-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path fill-rule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.715 1.295 2.56 0 3.276l-11.54 6.348c-1.25.687-2.779-.217-2.779-1.643V5.653z" clip-rule="evenodd" />
+                </svg>
+                Start
+            </button>
+
+            <!-- Stop Button - onclick removed as requested -->
+            <button id="stop-btn" class="control-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path fill-rule="evenodd" d="M6 5.25A2.25 2.25 0 003.75 7.5v9a2.25 2.25 0 002.25 2.25h12A2.25 2.25 0 0020.25 16.5v-9A2.25 2.25 0 0018 5.25H6z" clip-rule="evenodd" />
+                </svg>
+                Stop
+            </button>
+        </div>
+    </div>
+
+    <!-- Custom Alert/Confirmation Modal Structure -->
+    <!-- The 'hidden' class keeps this invisible by default. Use JavaScript to remove this class to show the modal. -->
+    <div id="custom-alert-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h3 class="modal-title">Action Confirmed</h3>
+            <p class="modal-message">
+                The color generation process has started successfully. 
+                The background will now change every second.
+            </p>
+            <button id="modal-close-btn" class="modal-close-btn">
+                ◀ Back 
+            </button>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

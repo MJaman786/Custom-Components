@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minimalist Dark Login</title>
+    <!-- Google Fonts: Inter -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Google Material Symbols Outlined for Icons -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <style>
+      /* --- CSS Variables for Dark Theme --- */
+      :root {
+        --color-bg-primary: #1a202c; /* Dark background */
+        --color-bg-secondary: #2d3748; /* Card background */
+        --color-text-primary: #e2e8f0; /* Light text */
+        --color-text-secondary: #a0aec0; /* Label/Icon color */
+        --color-accent: #48bb78; /* Green accent (for button/focus) */
+        --color-input-bg: #4a5568; /* Input field background */
+        --color-border: #4a5568; /* Border color */
+      }
+
+      /* --- Global Styles --- */
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: var(--color-bg-primary);
+        color: var(--color-text-primary);
+        min-height: 100vh;
+        margin: 0;
+        padding: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center; /* Center the card vertically and horizontally */
+      }
+
+      /* --- Login Card Container --- */
+      .login-container {
+        width: 90%;
+        max-width: 420px; /* Slimmer max-width for a typical login form */
+        background-color: var(--color-bg-secondary);
+        padding: 2.5rem;
+        border-radius: 1rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        transition: all 0.3s ease-in-out;
+      }
+
+      /* --- Header --- */
+      .header {
+        margin-bottom: 2.5rem;
+        text-align: center;
+      }
+
+      .header h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--color-text-primary);
+        margin-bottom: 0.5rem;
+      }
+
+      .header p {
+        color: var(--color-text-secondary);
+        font-size: 0.95rem;
+      }
+
+      /* --- Form Group Styling --- */
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      /* Group for icon placement */
+      .input-icon-group {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+
+      /* Icon styling and positioning (Left side) */
+      .input-icon {
+        position: absolute;
+        left: 1rem;
+        color: var(--color-text-secondary);
+        font-size: 1.25rem;
+        pointer-events: none;
+      }
+
+      /* Toggle Icon styling and positioning (Right side) */
+      .password-toggle {
+        position: absolute;
+        right: 1rem;
+        color: var(--color-text-secondary);
+        font-size: 1.25rem;
+        cursor: pointer; /* Make it look clickable */
+        transition: color 0.2s;
+        z-index: 10;
+      }
+
+      .password-toggle:hover {
+        color: var(--color-text-primary);
+      }
+
+      .icon-focus {
+        color: var(--color-text-primary);
+      }
+
+      /* Input Field Styling */
+      .input-icon-group input {
+        background-color: var(--color-input-bg);
+        color: var(--color-text-primary);
+        border: 1px solid var(--color-border);
+        /* Increased padding-right (3rem) to make room for the toggle icon */
+        padding: 1rem 3rem 1rem 3rem;
+        width: 100%;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        transition: border-color 0.2s, box-shadow 0.2s;
+        box-sizing: border-box;
+      }
+
+      /* Focus state */
+      .input-icon-group input:focus {
+        border-color: var(--color-accent);
+        box-shadow: 0 0 0 1px var(--color-accent);
+        outline: none;
+      }
+
+      /* --- Button Styling --- */
+      .btn-submit {
+        width: 100%;
+        padding: 1rem 1.5rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: background-color 0.2s, box-shadow 0.2s;
+        border: none;
+
+        /* Primary Accent Color */
+        background-color: var(--color-accent);
+        color: var(--color-bg-primary);
+        font-size: 1.1rem;
+      }
+
+      .btn-submit:hover {
+        background-color: #38a169;
+        box-shadow: 0 4px 15px rgba(72, 187, 120, 0.4);
+      }
+
+      /* --- Optional Footer Link --- */
+      .footer-link {
+        text-align: center;
+        margin-top: 1.5rem;
+        font-size: 0.9rem;
+      }
+
+      .footer-link a {
+        color: var(--color-accent);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .footer-link a:hover {
+        color: #63b3ed; /* Light blue on hover */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="header">
+        <h1>Welcome Back</h1>
+        <p>Please sign in to access your dashboard.</p>
+      </div>
+
+      <form>
+        <!-- Email/Username Field -->
+        <div class="form-group">
+          <div class="input-icon-group">
+            <!-- User Icon (Material Symbols) -->
+            <span class="material-symbols-outlined input-icon">person</span>
+            <input
+              type="email"
+              id="email"
+              placeholder="Email or Username"
+              required
+              autocomplete="off"
+            />
+          </div>
+        </div>
+
+        <!-- Password Field (Now includes the toggle icon) -->
+        <div class="form-group">
+          <div class="input-icon-group">
+            <!-- Lock Icon (Material Symbols) -->
+            <span class="material-symbols-outlined input-icon lock-icon"
+              >lock</span
+            >
+            <input
+              type="password"
+              id="password"
+              placeholder="Password"
+              required
+            />
+            <!-- New Toggle Icon (Initially 'visibility_off') -->
+            <span
+              class="material-symbols-outlined password-toggle"
+              id="toggle-password"
+              >visibility_off</span
+            >
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn-submit">Sign In</button>
+
+        <!-- Forgot Password Link -->
+        <div class="footer-link">
+          <a href="./forget.html">Forgot Password?</a>
+        </div>
+      </form>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display: flex;
+            gap: 10px;
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        .box {
+            width: 200px;
+            height: 100px;
+            background-color: brown;
+            transition: all 0.3s ease;
+        }
+
+        /* when hovering inside container, dim all boxes */
+        .container:hover .box {
+            opacity: 0.8;
+        }
+
+        /* but keep the hovered box at full opacity */
+        .container .box:hover {
+            opacity: 1;
+            scale: 1.01;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box b4"></div>
+    </div>
+</body>
+
+</html>

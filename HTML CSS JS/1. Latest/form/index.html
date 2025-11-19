@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="main-container">
+            <header>
+                <h1 class="title">Student Signup Form</h1>
+            </header>
+            <form action="" class="form-wrapper">
+                <div class="form-data">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" placeholder="user@246" autocomplete="off">
+                    <i class="fa-solid fa-circle-user form-icons" ></i>
+                </div>
+                <div class="form-data">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="user@example.com" autocomplete="off">
+                    <i class="fa-solid fa-envelope form-icons" ></i>
+                </div>
+                <div class="form-data">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" placeholder="password" autocomplete="off">
+                    <i class="fa-solid fa-eye-slash form-icons eye-icon" style="cursor: pointer;"></i>
+                    <!-- <i class="fa-solid fa-eye"></i> -->
+                </div>
+                <div class="form-data">
+                    <p class="warning-text"></p>                </div>
+                <div class="form-data">
+                    <button type="submit" id="submit-btn" disabled>Submit</button>
+                    <i class="fa-solid fa-floppy-disk submit-icon"></i>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

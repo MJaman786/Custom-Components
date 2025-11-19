@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @font-face {
+            font-family: 'myFont';
+            src: url('./fonts/digital/Digital7Mono-Yz9J4.ttf');
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'myFont';
+            color: aliceblue;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            background-color: #17313E;
+        }
+
+        .clock {
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 350px;
+            /* height: 100px; */
+            padding: 10px;
+            background-color: rgba(225, 225, 225, 0.194);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .hours {
+            width: 100px;
+            height: 100px;
+            /* background-color: aqua; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+        }
+
+        .minutes {
+            width: 100px;
+            height: 100px;
+            /* background-color: aqua; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+
+        }
+
+        .seconds {
+            width: 100px;
+            height: 100px;
+            /* background-color: aqua; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+
+        }
+
+        .ampm {
+            width: 100px;
+            height: 100px;
+            /* background-color: aqua; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: navajowhite;
+        }
+
+        .dots {
+            width: 50px;
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            /* background-color: yellowgreen; */
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+            animation: clock 1.02s ease-in-out infinite both;
+            transition: all 0.5s ease-in-out;
+        }
+
+        /* .dot:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .dot:nth-child(2) {
+            animation-delay: 0.5s;
+        } */
+
+        @keyframes clock {
+            0%,
+            100% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="clock">
+        <!-- hours -->
+        <div class="hours">
+
+        </div>
+        <div class="dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+        <!-- minutes -->
+        <div class="minutes"></div>
+        <div class="dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+        <!-- seconds -->
+        <div class="seconds">
+
+        </div>
+        <!-- AM | PM -->
+        <div class="ampm">
+
+        </div>
+    </div>
+    <script>
+        let hours = document.querySelector('.hours');
+        let minutes = document.querySelector('.minutes');
+        let seconds = document.querySelector('.seconds');
+        let ampm = document.querySelector('.ampm');
+
+        function myDate(params) {
+            let date = new Date();
+            let hour = date.getHours();
+            let minute = date.getMinutes();
+            let second = date.getSeconds();
+
+            let formate = hour >= 12 ? 'AM' : 'PM'
+
+            hour = hour % 12;
+            if (hour) {
+                hour = hour;
+            } else {
+                hour = 12;
+            }
+
+            hours.innerText = `${hour}`
+            minutes.innerText = `${minute}`
+            seconds.innerText = `${second}`
+            ampm.innerText = `${formate}`
+
+        }
+
+        setInterval(myDate, 1000);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minimal Dark Multi-Column Form</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <form class="form-card">
+      <h2 class="form-title">Account Details</h2>
+
+      <!-- Two-Column Row: First Name & Last Name -->
+      <div class="form-row-2col">
+        <div class="input-group">
+          <input type="text" id="firstName" name="firstName" required placeholder=" " autocomplete="off"/>
+          <label for="firstName">First Name</label>
+        </div>
+        <div class="input-group">
+          <input type="text" id="lastName" name="lastName" required placeholder=" " autocomplete="off"/>
+          <label for="lastName">Last Name</label>
+        </div>
+      </div>
+
+      <!-- Single-Column Row: Email -->
+      <div class="input-group">
+        <input type="email" id="email" name="email" required placeholder=" " autocomplete="off"/>
+        <label for="email">Email Address</label>
+      </div>
+
+      <!-- Three-Column Row: Location Details -->
+      <h3 class="form-subtitle">Address Details</h3>
+      <div class="form-row-3col">
+        <div class="input-group">
+          <input type="text" id="city" name="city" required placeholder=" " autocomplete="off"/>
+          <label for="city">City</label>
+        </div>
+        <div class="input-group">
+          <input type="text" id="state" name="state" required placeholder=" " autocomplete="off"/>
+          <label for="state">State</label>
+        </div>
+        <div class="input-group">
+          <input type="text" id="zip" name="zip" required placeholder=" " autocomplete="off"/>
+          <label for="zip">Zip Code</label>
+        </div>
+      </div>
+
+      <!-- Two-Column Row: Dropdowns -->
+      <div class="form-row-2col dropdown-row">
+        
+        <!-- Dropdown 1: Select Type -->
+        <div class="dropdown-group" id="dropdown1">
+            <div class="dropdown-label">Select Project Type</div>
+            <div class="dropdown-container">
+                <div class="dropdown-head">
+                    <span class="selected-option">Web Development</span>
+                    <div class="chevron"></div>
+                </div>
+                <ul class="dropdown-option">
+                    <li>Web Development</li>
+                    <li>Mobile App</li>
+                    <li>Data Science</li>
+                    <li>Machine Learning</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Dropdown 2: Subscription Tier -->
+        <div class="dropdown-group" id="dropdown2">
+            <div class="dropdown-label">Subscription Tier</div>
+            <div class="dropdown-container">
+                <div class="dropdown-head">
+                    <span class="selected-option">Standard</span>
+                    <div class="chevron"></div>
+                </div>
+                <ul class="dropdown-option">
+                    <li>Basic</li>
+                    <li>Standard</li>
+                    <li>Premium</li>
+                </ul>
+            </div>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-button">Create Account</button>
+    </form>
+    
+    <script src="./script.js"></script>
+  </body>
+</html>

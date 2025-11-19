@@ -1,0 +1,147 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  background-color: #1a1a2e; /* Deep dark blue/purple background */
+  display: flex;
+  flex-direction: column; /* Changed to column to stack the drop-down-body divs */
+  justify-content: flex-start; /* Start from the top */
+  align-items: center;
+  color: #ffffff;
+  padding-top: 50px; /* Added padding to move content down */
+}
+
+.drop-down-body {
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0px; /* Reduced vertical padding */
+  min-height: auto; /* Removed min-height */
+  background-color: #d1d1e000; /* Made background transparent */
+}
+
+/* Dropdown Container */
+.dropdown-container {
+  width: 95%;
+  max-width: 300px;
+  position: relative; /* Crucial for positioning the options list absolutely */
+  /* background-color: #d1d1e0; */
+}
+
+/* Dropdown Field (The visible part that is clicked) */
+.dropdown-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  cursor: pointer;
+  background-color: #2c2c4b; /* Slightly lighter dark background for the field */
+  color: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #4a4a75;
+  z-index: 10; /* Make sure the head is always on top */
+  position: relative; /* Ensure z-index is respected */
+  transition: all 0.2s ease-in-out;
+}
+
+.dropdown-field:hover {
+  background-color: #3f3f6e;
+}
+
+/* Chevron Icon (Pure CSS) */
+.chevron {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #ffffff;
+  transition: transform 0.3s ease;
+}
+
+/* Options List (UL) */
+.dropdown-options {
+  list-style: none;
+  padding: 0;
+  margin: 0; /* Remove margin to ensure perfect alignment */
+  position: relative; /* Changed to RELATIVE for vertical flow and dynamic height */
+  /* top: 100%; <-- Removed */
+  left: 0;
+  width: 100%;
+  background-color: #2c2c4b; /* Match field background */
+  border: 1px solid #4a4a75;
+  border-top: none; /* Removed top border */
+  border-radius: 8px;
+  border-top-left-radius: 0; /* Ensures connection to the header */
+  border-top-right-radius: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  z-index: 5; /* Lower than dropdown-field */
+  overflow-y: hidden; /* CRUCIAL: Hides the overflow content */
+
+  /* Initial state for accordion functionality */
+  height: 0; 
+  transition: height 0.3s ease-out; /* Animates the height property */
+}
+
+/* Active/Open state will be set dynamically via JavaScript's inline style */
+/* The 'show' class is no longer used for the height transition */
+
+
+/* Options Item (LI) */
+.dropdown-options li {
+  padding: 10px 16px;
+  color: #d1d1e0; /* Light text color */
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.dropdown-options li:hover {
+  background-color: #3f3f6e; /* Highlight on hover */
+  color: #ffffff;
+}
+
+/* Separator for better readability */
+.dropdown-options li:not(:last-child) {
+  border-bottom: 1px solid #3f3f6e;
+}
+
+/* Ensure bottom list items have rounded corners */
+.dropdown-options li:first-child {
+  /* No top radius needed, as the container handles that */
+  border-top: none; 
+}
+
+.dropdown-options li:last-child {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-bottom: none; /* Remove separator on the last item */
+}
+
+/* Custom Scrollbar for Options List (Webkit browsers like Chrome, Safari, Edge) */
+.dropdown-options::-webkit-scrollbar {
+  width: 5px; /* Width of the vertical scrollbar */
+  height: 5px; /* Height (Only applies to horizontal scrollbar) */
+}
+
+.dropdown-options::-webkit-scrollbar-track {
+  background: #2c2c4b; /* Track matches the background of the list */
+  border-radius: 4px;
+}
+
+.dropdown-options::-webkit-scrollbar-thumb {
+  background: #4a4a75; /* Darker accent color for the thumb */
+  border-radius: 4px;
+}
+
+.dropdown-options::-webkit-scrollbar-thumb:hover {
+  background: #5a5a89; /* Slightly brighter on hover */
+}

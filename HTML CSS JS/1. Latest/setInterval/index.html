@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist Counter</title>
+    <style>
+        /* Basic Reset and Variables */
+        :root {
+            --color-dark-bg: #1e1e1e;
+            --color-mid-bg: #2d2d2d;
+            --color-text-primary: #f0f0f0;
+            --color-text-secondary: #aaaaaa;
+            --color-accent-start: #4caf50; /* Green for Start */
+            --color-accent-stop: #f44336; /* Red for Stop */
+            --color-box-bg: #3c3c3c;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Body and Overall Layout */
+        body {
+            background-color: var(--color-dark-bg);
+            color: var(--color-text-primary);
+            font-family: var(--font-family);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        /* Main Container for Boxes */
+        .counter-container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: var(--color-mid-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Individual Boxes */
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: var(--color-box-bg);
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--color-accent-start); /* Use the green accent for the numbers */
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4);
+            transition: background-color 0.3s;
+        }
+
+        /* Controls Section */
+        .controls {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Buttons Styling */
+        .control-button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+            color: var(--color-dark-bg); /* Dark text for contrast on colored buttons */
+        }
+
+        .control-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .control-button:active {
+            transform: translateY(0);
+            box-shadow: none;
+        }
+
+        /* Start Button Specifics */
+        .start-button {
+            background-color: var(--color-accent-start);
+        }
+        
+        /* Stop Button Specifics */
+        .stop-button {
+            background-color: var(--color-accent-stop);
+        }
+        
+        /* Optional: Header/Title */
+        h1 {
+            color: var(--color-text-primary);
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Minimalist Digital Counter</h1>
+
+    <div class="counter-container">
+        <div class="box" id="box1">0</div>
+        <div class="box" id="box2">0</div>
+        <div class="box" id="box3">0</div>
+    </div>
+
+    <div class="controls">
+        <button class="control-button start-button" id="startButton">Start</button>
+        <button class="control-button stop-button" id="stopButton">Stop</button>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

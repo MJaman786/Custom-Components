@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            background-color: aliceblue;
+        }
+
+        .toggle-container {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            width: 50%;
+            height: 100vh;
+            padding: 5px;
+            background-color: aquamarine;
+            display: flex;
+        }
+
+        #toggle-nav {
+            width: 100%;
+            height: 100%;
+            margin: auto;
+            /* background-color: aqua; */
+            background-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            padding: 0px 30px;
+            gap: 20px;
+        }
+
+        /* nav-logo */
+
+        /* nav-link */
+        .tul {
+            width: 100%;
+            /* height: 100%; */
+            /* background-color: blueviolet; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+            gap: 20px;
+            flex-direction: column;
+        }
+
+        .tul li {
+            width: 100%;
+            background-color: aquamarine;
+            padding: 0.7rem;
+        }
+
+        .tul li a {
+            text-decoration: none;
+            display: flex;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="toggle-container">
+        <nav id="toggle-nav">
+            <div class="tul">
+                <li><a href="">Link 1</a></li>
+                <li><a href="">Link 1</a></li>
+                <li><a href="">Link 1</a></li>
+                <li><a href="">Link 1</a></li>
+                <li><a href="">Link 1</a></li>
+            </div>
+        </nav>
+    </div>
+</body>
+
+</html>

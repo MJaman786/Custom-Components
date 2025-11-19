@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 400;
+        }
+        th,
+        td {
+            padding: 10px;
+        }
+
+        tr:nth-child(even){
+            background-color: antiquewhite;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" style="margin: 20px;">
+        <input type="text" name="name" id="name" placeholder="Enter name" style="padding: 10px;">
+        <input type="email" name="mail" id="mail" placeholder="Enter gmail" style="padding: 10px;">
+        <input type="password" name="password" id="password" placeholder="Enter password" style="padding: 10px;">
+        <button type="submit" style="padding: 10px;">Click to add</button>
+    </form>
+    <button style="padding: 10px; margin: 6px 20px;" onclick="clearAllRecords()">Clear Records</button>
+
+    <table border="1" style="width: 60%; margin: 20px auto; border-collapse: collapse;">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Mail</th>
+                <th>Password</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr>
+                <td>Aman</td>
+                <td>amanmujawar@gmail.com</td>
+                <td>aman123</td>
+                <td><button style="padding: 6px; margin: auto; display: block; width: 80%;">Clear</button></td>
+            </tr> -->
+        </tbody>
+    </table>
+    <script>
+
+        // list of users
+        let myList = [];
+
+        // geting and adding content to table
+        let form = document.querySelector('form');
+        let tbody = document.querySelector('tbody');
+
+        form.onsubmit = function addItem(e) {
+            e.preventDefault();
+
+            let name = document.querySelector('#name').value;
+            let mail = document.querySelector('#mail').value;
+            let password = document.querySelector('#password').value;
+
+            let user = {
+                Objname: name,
+                Objmail: mail,
+                Objpassword: password
+            };
+
+            myList.push(user);
+            localStorage.setItem("myList", JSON.stringify(myList));
+            displayTable();
+            form.reset();
+        }
+
+        function displayTable() {
+            tbody.innerHTML = ``;
+            for (let index = 0; index < myList.length; index++) {
+
+                let newRow = document.createElement('tr');
+                newRow.innerHTML = `
+                    <td>${myList[index].Objname}</td>
+                    <td>${myList[index].Objmail}</td>
+                    <td>${myList[index].Objpassword}</td>
+                    <td><button onclick="clearItem(${index})" style="padding: 6px; margin: auto; display: block; width: 80%;">Clear</button></td>
+                `;
+                tbody.appendChild(newRow);
+
+            }
+
+        }
+
+        function clearItem(index) {
+            myList.splice(index, 1);
+            localStorage.setItem("myList", JSON.stringify(myList));
+            displayTable();
+        }
+
+        function clearAllRecords(){
+            localStorage.clear();
+            location.reload();
+        }
+
+        window.onload = function () {
+            myList = JSON.parse(localStorage.getItem("myList")) || [];
+            displayTable();
+        }
+    </script>
+</body>
+
+</html>

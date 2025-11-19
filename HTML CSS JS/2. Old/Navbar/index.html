@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @font-face {
+            font-family: 'popins';
+            src: url('./fonts/Poppins/Poppins-ExtraLight.ttf');
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'popins';
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            background-color: #17313E;
+            scroll-behavior: smooth;
+            /* background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1); */
+            /* background-image: linear-gradient(-20deg, #b721ff 0%, #21d4fd 100%); */
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            /* background-color: aquamarine; */
+            padding: 20px 0px;
+            z-index: 100;
+        }
+
+        .navbar {
+            width: 85%;
+            height: 70px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0px 30px;
+            /* background-color: brown; */
+            background-color: rgba(225, 225, 225, 0.3);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(225, 225, 225, 0.3);
+            box-shadow: 0 0 10px rgba(224, 255, 255, 0.372);
+            border-radius: 50px;
+            
+        }
+
+        .navbar .linklist {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            /* justify-content: space-evenly; */
+            gap: 30px;
+            padding-right: 20px;
+        }
+
+        .navbar .linklist li a {
+            text-decoration: none;
+            color: white;
+            display: block;
+            padding: 15px;
+            font-weight: 600;
+            /* background-color: aliceblue; */
+        }
+
+        .navbar .sidebar-toggle-logo {
+            display: none;
+            gap: 5px;
+        }
+
+        @media (max-width:800px) {
+            .navbar .sidebar-toggle-logo {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+            }
+
+            .navbar .linklist {
+                display: none;
+            }
+        }
+
+        .navbar .sidebar-toggle-logo .bar {
+            width: 30px;
+            height: 6px;
+            background-color: black;
+            border-radius: 20px;
+            transition: all 0.5s ease;
+        }
+
+        .main1 {
+            margin: auto;
+            width: 100%;
+            height: 600px;
+            /* background-color: aqua; */
+            background-color: #B9375D;
+            backdrop-filter: blur(20px);
+        }
+
+        .main2 {
+            margin: auto;
+            width: 100%;
+            height: 600px;
+            background-color: #D25D5D;
+        }
+
+        .main3 {
+            margin: auto;
+            width: 100%;
+            height: 600px;
+            background-color: #640D5F;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 100px;
+            left: 150%;
+            /* transform: translate(-50%, -50%); */
+            width: 80%;
+            height: 800px;
+            background-color: rgba(225, 225, 225, 0.3);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(225, 225, 225, 0.3);
+            box-shadow: 0 0 10px rgba(224, 255, 255, 0.372);
+            border-radius: 20px;
+            transition: all 0.8s ease-in-out;
+            z-index: 100;
+        }
+
+        .sidebar .linklist {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px 10px
+        }
+
+        .sidebar .linklist li {
+            width: 95%;
+            /* background-color: crimson; */
+        }
+
+        .sidebar .linklist li a {
+            text-decoration: none;
+            color: black;
+            display: block;
+            padding: 15px;
+            font-weight: 600;
+            color: aliceblue;
+            /* background-color: aliceblue; */
+        }
+
+        .toggle-btn {
+            position: fixed;
+            top: 100px;
+            left: 10%;
+            /* transform: translate(-50%, -50%); */
+        }
+
+        .toggle-bars #bar1 {
+            transform: rotate(45deg) translate(-2px, 2px) scale(0.6);
+            /* background-color: blueviolet; */
+        }
+
+        .toggle-bars #bar2 {
+            display: none;
+        }
+
+        .toggle-bars #bar3 {
+            transform: rotate(-45deg) translate(5px, -10px) scale(0.6);
+            /* background-color: darkgoldenrod; */
+
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <h1 class="nav-logo" style="color: aliceblue;">Portfolio</h1>
+            <ul class="linklist">
+                <li><a href="">Home</a></li>
+                <li><a href="">About</a></li>
+                <li><a href="">Skills</a></li>
+                <li><a href="">Project</a></li>
+                <li><a href="">Contact</a></li>
+            </ul>
+            <div class="sidebar-toggle-logo">
+                <div class="bar" id="bar1"></div>
+                <div class="bar" id="bar2"></div>
+                <div class="bar" id="bar3"></div>
+            </div>
+        </nav>
+    </header>
+    <div class="sidebar">
+        <ul class="linklist">
+            <li><a href="">Home</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="">Skills</a></li>
+            <li><a href="">Project</a></li>
+            <li><a href="">Contact</a></li>
+        </ul>
+    </div>
+    <div class="main1">
+
+    </div>
+    <div class="main2">
+
+    </div>
+    <div class="main3">
+
+    </div>
+    <script>
+        let sidebarToggleLogo = document.querySelector('.sidebar-toggle-logo');
+        let sidebar = document.querySelector('.sidebar');
+
+        sidebarToggleLogo.addEventListener('click', () => {
+            sidebar.classList.toggle('toggle-btn');
+            sidebarToggleLogo.classList.toggle('toggle-bars');
+        });
+
+    </script>
+</body>
+
+</html>

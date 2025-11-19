@@ -1,0 +1,121 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  /* Using a modern, clean font stack */
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  background-color: #121212; /* Very deep dark background */
+  display: flex;
+  align-items: flex-start; /* Align to the top of the body */
+  justify-content: center;
+  color: #e0e0e0; /* Soft white text */
+  padding-top: 50px;
+}
+
+/* Main wrapper for centering the component */
+.dropdown {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Container for the head and options */
+.dropdown-container {
+  width: 100%;
+  max-width: 300px;
+  /* Darker shade for the component itself */
+  background-color: #1f1f1f;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Subtle shadow for depth */
+}
+
+/* Dropdown Head */
+.dropdown-head {
+  padding: 15px 15px; /* Slightly adjusted padding */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* border-radius: 10px; */
+  cursor: pointer;
+  z-index: 3; /* Ensure it stays above the options */
+  position: relative; /* Needed for z-index */
+  transition: background-color 0.2s;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.dropdown-head:hover {
+  background-color: #2a2a2a; /* Lighten slightly on hover */
+}
+
+/* Chevron Icon (assuming you have one, if not, add it to your HTML) */
+.drop-icon {
+  /* transform: rotate(60deg); */
+  transition: all 0.5s ease-in-out;
+}
+
+/* Options List Container (UL) */
+.dropdown-option {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  z-index: 1;
+  max-height: 0px; /* Crucial for the accordion collapse/expand */
+  overflow: hidden; /* Hides content when height is 0 */
+  /* Enable scrolling only when open and content exceeds height */
+  overflow-y: auto;
+  transition: max-height 0.3s ease-in-out;
+  /* Visual styling */
+  border-top: 1px solid #333333; /* Clean separation line */
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+/* Options Item (LI) */
+.dropdown-option li {
+  padding: 15px 15px;
+  color: #b0b0b0; /* Slightly muted color for default state */
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  border-bottom: 1px solid #282828; /* Subtle separator between items */
+}
+
+.dropdown-option li:hover {
+  background-color: #2a2a2a; /* Subtle highlight on hover */
+  color: #ffffff;
+}
+
+/* Remove bottom border from the last item */
+.dropdown-option li:last-child {
+  border-bottom: none;
+}
+
+/* Custom Scrollbar for Options List (Webkit) */
+.dropdown-option::-webkit-scrollbar {
+  width: 6px; /* Slightly thicker scrollbar */
+}
+
+.dropdown-option::-webkit-scrollbar-track {
+  background: #1f1f1f; /* Matches the background of the list */
+}
+
+.dropdown-option::-webkit-scrollbar-thumb {
+  background: #444444; /* Dark gray, subtle thumb */
+  border-radius: 3px;
+}
+
+.dropdown-option::-webkit-scrollbar-thumb:hover {
+  background: #555555;
+}

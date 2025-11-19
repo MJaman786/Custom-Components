@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Theme Color Changer Demo</title>
+    <style>
+        /* CSS Variables for Dark Theme */
+        :root {
+            --background-color: #121212; /* Deep background */
+            --container-bg: #1e1e1e;   /* Slightly lighter container */
+            --primary-color: #2196F3; /* Blue - for Start */
+            --danger-color: #FF5252;  /* Red - for Stop */
+            --text-color-light: #e0e0e0;
+            --text-color-muted: #9e9e9e;
+            --shadow-dark: 0 5px 15px rgba(0, 0, 0, 0.4);
+            --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        /* --- Base Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: var(--background-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color-light);
+            transition: background-color 0.5s ease; /* For smooth color change */
+        }
+
+        /* --- Main Container --- */
+        .color-changer-container {
+            width: 90%;
+            max-width: 450px;
+            padding: 30px;
+            background-color: var(--container-bg);
+            border-radius: 12px;
+            /* Subtle, deep shadow */
+            box-shadow: var(--shadow-dark); 
+            text-align: center;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .color-changer-container:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px); /* Lift effect on hover */
+        }
+
+        /* --- Title and Display --- */
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            font-weight: 300; /* Lighter font weight for modern minimal look */
+        }
+
+        .color-display {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: var(--text-color-muted);
+            min-height: 1.5em;
+        }
+
+        /* The actual color value span */
+        #current-color {
+            font-family: 'Consolas', monospace; /* Monospace for code/hex values */
+            font-weight: 600;
+            color: var(--text-color-light); /* Make the value stand out */
+            display: block;
+            margin-top: 5px;
+        }
+
+        /* --- Buttons --- */
+        .button-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Start Button Styling */
+        .btn-start {
+            background-color: var(--primary-color);
+            color: var(--background-color);
+        }
+
+        .btn-start:hover {
+            background-color: #1976D2; /* Darker blue on hover */
+            box-shadow: 0 4px 8px rgba(33, 150, 243, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* Stop Button Styling */
+        .btn-stop {
+            background-color: var(--danger-color);
+            color: var(--background-color);
+        }
+
+        .btn-stop:hover {
+            background-color: #d32f2f; /* Darker red on hover */
+            box-shadow: 0 4px 8px rgba(255, 82, 82, 0.5);
+            transform: translateY(-2px);
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="color-changer-container">
+        <h1>Dynamic Background Color</h1>
+        <div class="color-display">
+            Current Color: <span id="current-color">#121212</span>
+        </div>
+        
+        <div class="button-group">
+            <button id="startButton" class="btn btn-start">Start</button>
+            <button id="stopButton" class="btn btn-stop">Stop</button>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

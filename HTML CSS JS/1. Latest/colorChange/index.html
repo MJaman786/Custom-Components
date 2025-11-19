@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Dark Control</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Use Inter font and ensure full viewport height */
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: all 0.8s ease;
+        }
+        /* Custom CSS to allow the JS to dynamically change the border color */
+        #colorDisplay {
+            border-color: var(--current-accent-color, #455A64); /* Fallback to Slate Smoke */
+        }
+        #colorNameDisplay {
+            color: var(--current-accent-color, #ECEFF1); /* Fallback for text */
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex items-center justify-center p-4">
+
+    <!-- Main Control Panel -->
+    <div id="controlPanel" class="w-full max-w-lg p-8 bg-gray-800 rounded-xl shadow-2xl transition duration-500">
+        
+        <h1 class="text-3xl font-extrabold text-center mb-6 text-gray-100">
+            Control Panel
+        </h1>
+        
+        <!-- Current Color Display -->
+        <div id="colorDisplay" class="mb-8 text-center p-4 border-2 border-gray-700 rounded-lg transition duration-500">
+            <p class="text-sm uppercase tracking-wider text-gray-400">Current Theme Color</p>
+            <h2 id="colorNameDisplay" class="text-xl font-bold mt-1 transition duration-500">
+                Loading...
+            </h2>
+        </div>
+        
+        <!-- Button Container -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+
+            <!-- Start Button (Accent Green) -->
+            <button id="startButton" 
+                    class="flex-1 py-3 px-6 text-lg font-semibold rounded-lg transition duration-200 
+                           bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-green-500 focus:ring-opacity-50
+                           shadow-lg hover:shadow-xl active:scale-[0.98]">
+                Start
+            </button>
+
+            <!-- Stop Button (Accent Red) -->
+            <button id="stopButton" 
+                    class="flex-1 py-3 px-6 text-lg font-semibold rounded-lg transition duration-200 
+                           bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-500 focus:ring-opacity-50
+                           shadow-lg hover:shadow-xl active:scale-[0.98]">
+                Stop
+            </button>
+
+        </div>
+        
+    </div>
+
+    <!-- Load external JavaScript file for logic -->
+    <script src="./script.js"></script>
+</body>
+</html>

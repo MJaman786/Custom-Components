@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: aliceblue;
+            font-family: "Roboto", sans-serif;
+            ;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            background-color: #090040;
+        }
+
+        .sidebar {
+            width: 30%;
+            height: 100vh;
+            background-color: #471396;
+            padding: 10px;
+        }
+
+        ul {
+            width: 100%;
+            /* background-color: aquamarine; */
+        }
+
+        li {
+            width: 100%;
+            list-style: none;
+            /* background-color: azure; */
+            /* border: 2px solid black; */
+        }
+
+        a {
+            display: block;
+            width: 100%;
+            padding: 20px;
+            text-decoration: none;
+            /* background-color: antiquewhite; */
+            /* text-align: center; */
+            transition: all 0.5s ease;
+        }
+
+        a:hover {
+            background-color: #090040;
+        }
+        .drop-parent{
+            border: 1px solid lightblue;
+        }
+        .drop-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            /* background-color: black; */
+        }
+
+        .drop-link a {
+            background-color: #090040;
+        }
+
+        .drop-link {
+            height: 0px;
+            overflow-y: hidden;
+            transition: all 0.5s ease-in-out;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar">
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">About</a></li>
+            <li class="drop-parent">
+                <div class="drop-head">Section1 <span class="material-symbols-outlined">arrow_drop_down</span></div>
+                <div class="drop-link">
+                    <a href="">Src1</a>
+                    <a href="">Src2</a>
+                </div>
+            </li>
+            <li><a href="">Section2</a></li>
+            <li class="drop-parent">
+                <div class="drop-head">Section3 <span class="material-symbols-outlined">arrow_drop_down</span></div>
+                <div class="drop-link">
+                    <a href="">Src1</a>
+                    <a href="">Src2</a>
+                </div>
+            </li>
+            <li class="drop-parent">
+                <div class="drop-head">Section3 <span class="material-symbols-outlined">arrow_drop_down</span></div>
+                <div class="drop-link">
+                    <a href="">Src1</a>
+                    <a href="">Src2</a>
+                </div>
+            </li>
+            <li class="drop-parent">
+                <div class="drop-head">Section3 <span class="material-symbols-outlined">arrow_drop_down</span></div>
+                <div class="drop-link">
+                    <a href="">Src1</a>
+                    <a href="">Src2</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    
+    <script>
+        let allDropHead = document.getElementsByClassName('drop-head');
+
+    for (let i = 0; i < allDropHead.length; i++) {
+        let dropHead = allDropHead[i];
+        dropHead.onclick = function () {
+            let dropLink = this.nextElementSibling;
+
+            // Toggle logic
+            if (dropLink.style.height === '0px' || dropLink.style.height === '') {
+                dropLink.style.height = dropLink.scrollHeight + "px"; // Auto height
+            } else {
+                dropLink.style.height = '0px';
+            }
+        }
+    }
+
+        // allDropHead.onclick = function () {
+        //     for (let i = 0; i < allDropHead.length; i++) {
+        //         let dropHead = allDropHead[i];
+        //         let dropLink = dropHead.querySelector('.drop-link');
+
+                
+        //     }
+        // }
+
+    </script>
+</body>
+
+</html>

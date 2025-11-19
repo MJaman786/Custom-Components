@@ -1,0 +1,121 @@
+/* icons cdn */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css');
+
+/* fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,body{
+    width: 100%;
+    width: 100%;
+    font-family: 'Poppins';
+}
+
+.container{
+    width: 100%;
+    height: 100vh;
+    background-color: #242424;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-container{
+    width: 100%;
+    max-width: 400px;
+    /* background-color: aqua; */
+}
+
+/* header */
+.title{
+    padding: 15px 0px;
+    text-align: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: #353535;
+    color: #fff;
+    border: 1px solid rgba(224, 255, 255, 0.201);
+}
+
+.form-wrapper{
+    width: 100%;
+    border: 1px solid rgba(224, 255, 255, 0.242);
+    border-top: none;
+    padding: 10px 5px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.form-data{
+    padding: 5px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+}
+label{
+    color: aliceblue;
+}
+input{
+    width: 100%;
+    padding: 15px 15px 15px 50px;
+    outline: none;
+    background-color: #353535;
+    border: none;
+    color: #fff;
+    margin-top: 2px;
+    font-family: monospace;
+}
+
+input::placeholder{
+    padding-left: 5px;
+}
+
+.form-icons{
+    display: inline-block;
+    position: absolute;
+    top: 45px;
+    left: 30px;
+    color: #fff;
+}
+
+#submit-btn{
+    width: 100%;
+    padding: 15px;
+    outline: none;
+    background-color: #353535;
+    border: none;
+    color: #fff;
+    margin-top: 2px;
+    font-family: monospace;
+    text-align: center;
+    cursor: not-allowed;    
+    background-color: rgba(0, 128, 0, 0.598);
+    transition: all 0.5s ease;
+    border-radius: 5px;
+}
+
+#submit-btn:hover{
+    background-color: green;
+    transform: scale(1.02);
+}
+
+.submit-icon{
+    display: inline-block;
+    position: absolute;
+    top: 20px;
+    left: 35%;
+    color: #fff;
+}
+
+.warning-text{
+    text-align: center;
+    color: #fff;
+    font-size: 12px;
+    padding-left: 20px;
+}

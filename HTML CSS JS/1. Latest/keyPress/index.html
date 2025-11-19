@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard Event Demo</title>
+    <style>
+        /* CSS Variables for a clean, modern aesthetic */
+        :root {
+            --background-color: #202020; /* Light grey background */
+            --container-bg: #242424;    /* White container */
+            --text-color-dark: #f4f4f4;
+            --text-color-muted: #666666;
+            --border-color: #e0e0e0;
+            --header-bg: #4CAF50; /* Green header for table */
+            --header-text: #ffffff;
+            --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --font-mono: 'Roboto Mono', monospace; /* Monospace for key codes */
+        }
+
+        /* --- Base Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Align content to the top */
+            align-items: center;
+            min-height: 100vh;
+            background-color: var(--background-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color-dark);
+            padding: 40px 20px; /* Add some overall padding */
+        }
+
+        /* --- Main Container --- */
+        .keyboard-event-container {
+            width: 100%;
+            max-width: 800px; /* Wider container for the table */
+            background-color: var(--container-bg);
+            border-radius: 10px;
+            box-shadow: var(--shadow-light);
+            padding: 30px;
+            margin-bottom: 30px; /* Space below the info box */
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: var(--text-color-dark);
+            font-weight: 700;
+        }
+
+        p.instructions {
+            font-size: 1.1rem;
+            color: var(--text-color-muted);
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        /* --- Key Display Area (Optional, but good for feedback) --- */
+        .key-display {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--header-bg); /* Use accent color */
+            margin-top: 20px;
+            min-height: 1.5em; /* Prevent collapse */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            border: 2px dashed var(--border-color);
+            border-radius: 8px;
+            background-color: #fcfcfc;
+        }
+
+
+        /* --- Table Styles --- */
+        .event-table-wrapper {
+            width: 100%;
+            max-width: 800px;
+            background-color: var(--container-bg);
+            border-radius: 10px;
+            box-shadow: var(--shadow-light);
+            overflow: hidden; /* Ensures rounded corners on table header */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse; /* Remove double borders */
+            font-size: 0.95rem;
+        }
+
+        thead {
+            background-color: var(--header-bg);
+            color: var(--header-text);
+        }
+
+        th, td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        th {
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Alternating row colors for better readability */
+        tbody tr:nth-child(even) {
+            background-color: #191919;
+        }
+        tbody tr:nth-child(odd) {
+            background-color: var(--container-bg);
+        }
+
+        /* Highlight effect for new rows (optional, can be added with JS) */
+        tbody tr.new-row {
+            background-color: #e6ffe6; /* Light green highlight */
+            animation: fadeIn 0.5s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Table - Horizontal Scroll */
+        .table-responsive {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="keyboard-event-container">
+        <h1>Keyboard Event Listener</h1>
+        <p class="instructions">
+            Press any key on your keyboard to see its event details. Each key press will add a new row to the table below.
+        </p>
+        <div class="key-display">
+            Press a key...
+        </div>
+    </div>
+
+    <div class="event-table-wrapper">
+        <div class="table-responsive">
+            <table id="eventTable">
+                <thead>
+                    <tr>
+                        <th>Key</th>
+                        <th>Code</th>
+                        <th>Key Code</th>
+                        <th>Alt</th>
+                        <th>Ctrl</th>
+                        <th>Shift</th>
+                        <th>Time (ms)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="7" style="text-align: center; color: var(--text-color-muted);">
+                            Start pressing keys to populate the table.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

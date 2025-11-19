@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- google icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      background-color: aliceblue;
+      transition: all 0.5s ease;
+    }
+
+    .nav-container {
+      position: fixed;
+      top: 10px;
+      width: 100%;
+      height: 80px;
+      padding: 5px;
+      /* background-color: rgba(255, 255, 255, 0.3); */
+      display: flex;
+    }
+
+    nav {
+      width: 90%;
+      height: 70%;
+      margin: auto;
+      /* background-color: aqua; */
+      background-color: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      padding: 0px 30px;
+      gap: 20px;
+    }
+
+    /* nav-logo */
+
+    /* nav-link */
+    .nav-link {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      list-style: none;
+      gap: 3%;
+    }
+
+    .nav-link li a {
+      text-decoration: none;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      color: black;
+      padding: 0.7rem;
+    }
+
+    .menu {
+      display: none;
+    }
+
+    @media (max-width:700px) {
+      .nav-link {
+        display: none;
+      }
+
+      .menu {
+        margin-left: auto;
+        display: block;
+      }
+    }
+
+    /* hero section */
+    .hero {
+      width: 100%;
+      height: 700px;
+      background-image: url(./wallpaperflare.com_wallpaper.jpg);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- navigation bar -->
+  <div class="nav-container">
+    <nav>
+      <div class="logo" id="logo-container">
+        <h1>PORTFOLIO</h1>
+      </div>
+      <ul class="nav-link">
+        <li><a href="">Link1</a></li>
+        <li><a href="">Link2</a></li>
+        <li><a href="">Link2</a></li>
+        <li><a href="">Link2</a></li>
+        <li><a href="">Link2</a></li>
+      </ul>
+      <div class="menu" id="menu-container">
+        <h1>
+          <span class="material-symbols-outlined">menu</span>
+        </h1>
+      </div>
+    </nav>
+  </div>
+  <!-- main-hero -->
+  <div class="hero">
+
+  </div>
+  <!-- main-hero -->
+  <div class="hero">
+
+  </div>
+  <!-- main-hero -->
+  <div class="hero">
+
+  </div>
+  <!-- toggle -->
+  <div class="toggle-container">
+    <nav id="toggle-nav">
+      <div class="tul">
+        <li><a href="">Link 1</a></li>
+        <li><a href="">Link 1</a></li>
+        <li><a href="">Link 1</a></li>
+        <li><a href="">Link 1</a></li>
+        <li><a href="">Link 1</a></li>
+      </div>
+    </nav>
+  </div>
+  <style>
+    /* toggle */
+    .toggle-container {
+      position: fixed;
+      top: 100px;
+      left: 0;
+      width: 100%;
+      padding: 5px;
+      transform: translateX(150%);
+      opacity: 0;
+      transition: all 0.4s ease;
+      z-index: 99;
+
+    }
+
+
+    #toggle-nav {
+      width: 90%;
+      height: 100vh;
+      background-color: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      padding: 20px 20px;
+      display: flex;
+      align-items: flex-start;
+
+    }
+
+    /* nav-logo */
+
+    /* nav-link */
+    .tul {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: baseline;
+      list-style: none;
+      /* gap: 10px; */
+    }
+
+    .tul li {
+      width: 100%;
+      /* background-color: aquamarine; */
+      padding: 0.7rem;
+      /* background-color: aqua; */
+    }
+
+    .tul li a {
+      text-decoration: none;
+      display: flex;
+      padding-left: 5px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      color: black;
+    }
+
+    @media (max-width:700px) {
+      .toggle-event {
+        transform: translateX(0%);
+        opacity: 1;
+      }
+    }
+  </style>
+  <script>
+    let menu = document.getElementsByClassName('menu')[0];
+    let toggleContainer = document.getElementsByClassName('toggle-container')[0];
+    menu.onclick = function () {
+      toggleContainer.classList.toggle('toggle-event');
+    }
+  </script>
+</body>
+
+</html>

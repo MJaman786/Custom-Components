@@ -1,0 +1,85 @@
+/* BASIC SETUP */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* MAIN CONTAINER */
+.counter-container {
+    background-color: #ffffff;
+    padding: 40px 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 450px;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 1.8em;
+}
+
+/* DISPLAY COUNT AREA */
+.count-display {
+    font-size: 6em;
+    /* Large, noticeable number */
+    font-weight: bold;
+    color: #4a90e2;
+    /* A blue color for the main number */
+    padding: 20px 0;
+    margin-bottom: 40px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #f9f9ff;
+}
+
+/* BUTTONS WRAPPER */
+.button-group {
+    display: flex;
+    justify-content: space-around;
+    /* Distributes space evenly */
+    gap: 20px;
+    /* Space between buttons */
+}
+
+/* BUTTON STYLING (Base) */
+.count-button {
+    flex-grow: 1;
+    /* Makes buttons grow equally to fill space */
+    padding: 15px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1em;
+    cursor: pointer;
+    color: white;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* START BUTTON SPECIFIC STYLING (Green) */
+.count-button.start {
+    background-color: #5cb85c;
+    /* Success green */
+}
+
+.count-button.start:hover {
+    background-color: #4cae4c;
+    transform: translateY(-2px);
+}
+
+/* STOP BUTTON SPECIFIC STYLING (Red) */
+.count-button.stop {
+    background-color: #dc3545;
+    /* Danger red */
+}
+
+.count-button.stop:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+}

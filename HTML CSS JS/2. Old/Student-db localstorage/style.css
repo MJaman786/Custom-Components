@@ -1,0 +1,55 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    background-color: #101010;
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+table { border-collapse: collapse; border: 1px solid #fff; margin: auto; }
+
+.head { text-align: center; padding: 10px; margin-bottom: 20px; }
+
+th,
+td { padding: 10px 20px; text-align: center; }
+
+tr button { padding: 10px; }
+
+.input-fields {
+    min-width: 80%;
+    width: 600px;
+    background-color: #212121;
+    padding: 20px 30px;
+    margin: 30px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    border-radius: 10px;
+}
+
+.inp{ position: relative; padding: 10px; flex: 1 1 auto; }
+
+.input-fields input{ padding: 10px; outline: none; width: 100%; }
+
+.input-fields button{ padding: 10px; flex: 1 1 auto; }
+
+.input-fields label{
+    position: absolute;
+    top: 12px;
+    left: 24px;
+    color: #101010;
+    background-color: #fff;
+    padding: 5px 10px;
+    border-radius: 10px;
+    transition: all 0.5s ease;
+}
+
+input:focus + label,
+input:not(:placeholder-shown) + label { transform: translateY(-20px); color: #000; }
+
+input:focus{ box-shadow: 0 0 10px blue; }

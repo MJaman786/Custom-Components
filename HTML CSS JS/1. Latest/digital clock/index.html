@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Basic Reset and Setup */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Use a common, clean font */
+    background-color: #1a1a1a; /* Dark background for modern look */
+    color: #ffffff; /* White text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full viewport height */
+}
+
+/* Clock Container */
+.clock-container {
+    text-align: center;
+    padding: 20px;
+    /* Minimalist touch: subtle box shadow */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); 
+    border-radius: 10px;
+}
+
+/* Digital Clock Display (Time) */
+.digital-clock {
+    font-size: 5rem; /* Large font size for visibility */
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+    /* Optional: Monospaced font for that classic digital look */
+    font-family: 'Roboto Mono', monospace; 
+    /* Subtle green glow effect */
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    transition: font-size 0.3s ease; /* Smooth transition for responsiveness */
+}
+
+/* Digital Date Display */
+.digital-date {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #b0b0b0; /* Slightly muted color */
+    transition: font-size 0.3s ease;
+}
+
+/* ==================================== */
+/* RESPONSIVENESS (Media Queries) */
+/* ==================================== */
+
+/* For Tablets and smaller desktops (Max width 992px) */
+@media (max-width: 992px) {
+    .digital-clock {
+        font-size: 4rem; /* Reduce font size */
+    }
+    .digital-date {
+        font-size: 1.25rem;
+    }
+}
+
+/* For Mobile Devices (Max width 600px) */
+@media (max-width: 600px) {
+    .digital-clock {
+        font-size: 2.5rem; /* Significant reduction for small screens */
+        letter-spacing: 1px;
+    }
+    .digital-date {
+        font-size: 1rem;
+    }
+    .clock-container {
+        padding: 15px;
+        margin: 10px;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <div class="clock-container">
+        <div id="digital-clock" class="digital-clock">
+            10:00:00 AM
+        </div>
+        
+        <div id="digital-date" class="digital-date">
+             Thursday, October 8, 2025
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>

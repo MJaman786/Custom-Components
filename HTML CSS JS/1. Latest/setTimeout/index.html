@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>setTimeout Demonstrator</title>
+    <style>
+      /* Reusing and extending previous styles */
+      :root {
+        --color-dark-bg: #1e1e1e;
+        --color-mid-bg: #2d2d2d;
+        --color-text-primary: #f0f0f0;
+        --color-text-secondary: #aaaaaa;
+        --color-accent-schedule: #2196f3; /* Blue for Schedule */
+        --color-box-bg: #3c3c3c;
+        --color-input-bg: #4a4a4a;
+        --color-input-border: #666666;
+        --font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      /* Body and Overall Layout */
+      body {
+        background-color: var(--color-dark-bg);
+        color: var(--color-text-primary);
+        font-family: var(--font-family);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        flex-direction: column;
+        gap: 50px; /* Add space between the counter and the new form */
+      }
+
+      /* --- New Form Styles --- */
+      .timeout-container {
+        position: absolute;
+        /* Center the element horizontally */
+        left: 50%;
+        /* Initial position: off-screen above the top edge */
+        top: -100%;
+
+        /* Use translate to truly center the element relative to its own size (horizontal centering) */
+        transform: translateX(-50%);
+
+        width: 80%;
+        max-width: 400px;
+        padding: 30px;
+        background-color: var(--color-mid-bg);
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        /* Add transition for smooth movement */
+        transition: top 1s ease, transform 1s ease; /* Specify 'top' for the main animation */
+      }
+
+      /* New CSS class for the final (centered) state */
+      .timeout-container.slide-in {
+        /* Move the top edge of the element to the middle of the screen (50% from the top) */
+        top: 50%;
+        /* Use transform to move it up by half its own height to achieve true vertical center */
+        transform: translate(-50%, -50%);
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      label {
+        font-size: 0.9rem;
+        color: var(--color-text-secondary);
+        font-weight: 500;
+      }
+
+      input[type="text"],
+      input[type="number"] {
+        padding: 10px;
+        border: 1px solid var(--color-input-border);
+        border-radius: 4px;
+        background-color: var(--color-input-bg);
+        color: var(--color-text-primary);
+        font-size: 1rem;
+        outline: none;
+        transition: border-color 0.2s;
+      }
+
+      input[type="text"]:focus,
+      input[type="number"]:focus {
+        border-color: var(--color-accent-schedule);
+      }
+
+      /* Submit Button Style */
+      .schedule-button {
+        padding: 12px 25px;
+        margin-top: 10px;
+        border: none;
+        border-radius: 6px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        background-color: var(--color-accent-schedule);
+        color: var(--color-dark-bg);
+        transition: background-color 0.2s, transform 0.1s;
+      }
+
+      .schedule-button:hover {
+        background-color: #1a74b8; /* Darker blue on hover */
+        transform: translateY(-1px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+      }
+
+      /* Status Area (where the message will appear) */
+      .status-area {
+        min-height: 50px;
+        padding: 15px;
+        border: 1px dashed var(--color-text-secondary);
+        border-radius: 6px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        color: var(--color-text-secondary);
+      }
+
+      .status-area p {
+        margin: 0;
+      }
+
+      h2 {
+        color: var(--color-text-primary);
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+        font-weight: 400;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="timeout-container">
+      <h2>
+        <img src="./image.png" alt="" style="width: 30px; height: 30px" />Set
+        Timeout Demonstration
+      </h2>
+
+      <div class="form-group">
+        <label for="message-input">Message to Schedule:</label>
+        <input
+          type="text"
+          id="message-input"
+          placeholder="e.g., Time's up!"
+          value="Hello after 3 seconds"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="delay-input">Delay (in milliseconds):</label>
+        <input
+          type="text"
+          id="delay-input"
+          placeholder="e.g., 3000"
+          value="3000"
+        />
+      </div>
+
+      <button class="schedule-button" id="schedule-button">
+        Schedule Message
+      </button>
+
+      <div class="status-area" id="status-area">
+        <p>Scheduled messages will appear here...</p>
+      </div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>

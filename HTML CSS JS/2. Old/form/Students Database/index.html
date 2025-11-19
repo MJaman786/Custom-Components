@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students Data</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            padding: 10px 0px;
+        }
+
+        form {
+            /* background-color: antiquewhite; */
+            position: fixed;
+            top: 60px;
+            left: 0;
+            right: 0;
+            /* max-width: 500px; */
+            width: 90%;
+            display: block;
+            margin: auto;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        input {
+            padding: 10px;
+            outline: none;
+            font-family: 'Courier New', Courier, monospace;
+            flex: 1 1 auto;
+        }
+
+        button {
+            padding: 10px;
+            flex: 1 1 auto;
+        }
+
+        /*  */
+
+        .table-container {
+            width: 90%;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+            /* background-color: aqua; */
+            padding: 10px 0px;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 10px 20px;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Student's DataBase</h1>
+    <form action="">
+        <input type="text" name="name" id="name" placeholder="Enter Name">
+        <input type="text" name="emal" id="email" placeholder="Enter Email">
+        <input type="text" name="course" id="course" placeholder="Enter Course Enrolled">
+        <button>Sumbnit</button>
+    </form>
+    <div class="table-container">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Course Entrolled</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- <tr>
+                    <td>Aman Mujawar</td>
+                    <td>amanmujawar354@gmail.com</td>
+                    <td> Python FullStack </td>
+                    <td> - </td>
+                    <td> <button onclick="removeItems()">X</button> </td>
+                </tr> -->
+            </tbody>
+            <tfoot>
+
+            </tfoot>
+        </table>
+    </div>
+</body>
+<script>
+
+
+    let form = document.querySelector("form")
+    let tbody = document.querySelector("tbody")
+    let myArray = [];
+
+    form.onsubmit = function (event) {
+        event.preventDefault();
+
+        let user = document.querySelector("#name").value;
+        let email = document.querySelector("#email").value;
+        let course = document.querySelector("#course").value;
+
+        let myDate = new Date().toLocaleString('en-US', {
+            dateStyle: "medium",
+            timeStyle: "short"
+        })
+
+        let myObj = {
+            user: user,
+            email: email,
+            course: course,
+            date: myDate
+        };
+
+        myArray.push(myObj);
+        localStorage.setItem("myArray", JSON.stringify(myArray))
+
+        display()
+
+        // console.log(myArray)
+
+        form.reset();
+    }
+
+    function display() {
+        tbody.innerHTML = " "
+        for (let index = 0; index < myArray.length; index++) {
+            // let tr = document.createElement("tr")
+
+            tbody.innerHTML += `
+            <tr>
+                <td>${myArray[index].user}</td>
+                    <td>${myArray[index].email}</td>
+                    <td>${myArray[index].course}</td>
+                    <td>${myArray[index].date}</td>
+                    <td> <button onclick="removeItems(${index})">clear</button> </td>
+                </tr>
+                
+            `
+            // tbody.append(tr)
+        }
+    }
+
+    function removeItems(index) {
+        myArray.splice(index, 1)
+        localStorage.setItem("myArray", JSON.stringify(myArray))
+        display();
+    }
+
+    window.onload = () => {
+        (myArray = JSON.parse(localStorage.getItem("myArray"))) ? display() : [];
+        // myArray = JSON.parse(localStorage.getItem("myArray")) || [];
+        // display();
+    }
+
+</script>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./sctyle.css">
+    <title>Login Page</title>
+</head>
+<body>
+    <div class="home-page">
+        <form id="loginForm" novalidate>
+            <div class="form-title">
+                <h3 class="title">Login Form</h3>
+            </div>
+
+            <!-- Username -->
+            <div class="input-field">
+                <input type="text" name="username" placeholder=" " id="username">
+                <label for="username">Username</label>
+            </div>
+            <p class="status-msg" id="username-status"></p>
+
+            <!-- Email -->
+            <div class="input-field">
+                <input type="email" name="email" placeholder=" " id="email">
+                <label for="email">Email</label>
+            </div>
+            <p class="status-msg" id="email-status"></p>
+
+            <!-- Password -->
+            <div class="input-field">
+                <input type="password" name="password" placeholder=" " id="password">
+                <label for="password">Password</label>
+            </div>
+            <p class="status-msg" id="password-status"></p>
+
+            <!-- Button -->
+            <div class="submit-btn">
+                <button id="loginBtn" disabled>Login</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>

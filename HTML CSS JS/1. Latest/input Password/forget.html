@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password</title>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Google Material Symbols Outlined for Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
+    <style>
+        /* --- CSS Variables for Dark Theme (Consistent with Login Page) --- */
+        :root {
+            --color-bg-primary: #1a202c;     /* Dark background */
+            --color-bg-secondary: #2d3748;   /* Card background */
+            --color-text-primary: #e2e8f0;   /* Light text */
+            --color-text-secondary: #a0aec0; /* Label/Icon color */
+            --color-accent: #48bb78;         /* Green accent (for button/focus) */
+            --color-input-bg: #4a5568;       /* Input field background */
+            --color-border: #4a5568;         /* Border color */
+        }
+
+        /* --- Global Styles --- */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg-primary);
+            color: var(--color-text-primary);
+            min-height: 100vh;
+            margin: 0;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center; /* Center the card vertically and horizontally */
+        }
+
+        /* --- Login/Form Card Container --- */
+        .login-container {
+            width: 90%;
+            max-width: 420px; /* Consistent max-width */
+            background-color: var(--color-bg-secondary);
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* --- Header --- */
+        .header {
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: var(--color-text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        /* --- Form Group Styling --- */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Group for icon placement */
+        .input-icon-group {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Icon styling and positioning (Left side) */
+        .input-icon {
+            position: absolute;
+            left: 1rem;
+            color: var(--color-text-secondary);
+            font-size: 1.25rem;
+            pointer-events: none;
+        }
+        
+        /* Input Field Styling */
+        .input-icon-group input {
+            background-color: var(--color-input-bg);
+            color: var(--color-text-primary);
+            border: 1px solid var(--color-border);
+            padding: 1rem 1rem 1rem 3rem; 
+            width: 100%;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            box-sizing: border-box; 
+        }
+
+        /* Focus state */
+        .input-icon-group input:focus {
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 1px var(--color-accent);
+            outline: none;
+        }
+
+        /* --- Button Styling --- */
+        .btn-submit {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.2s, box-shadow 0.2s;
+            border: none;
+            
+            /* Primary Accent Color */
+            background-color: var(--color-accent);
+            color: var(--color-bg-primary); 
+            font-size: 1.1rem;
+        }
+
+        .btn-submit:hover {
+            background-color: #38a169;
+            box-shadow: 0 4px 15px rgba(72, 187, 120, 0.4);
+        }
+
+        /* --- Optional Footer Link (Link to Login) --- */
+        .footer-link {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-link a {
+            color: var(--color-accent);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-link a:hover {
+            color: #63b3ed;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        
+        <div class="header">
+            <h1>Forgot Password?</h1>
+            <p>Enter your email address below and we'll send you a link to reset your password.</p>
+        </div>
+
+        <form>
+            
+            <!-- Email Field -->
+            <div class="form-group">
+                <div class="input-icon-group">
+                    <!-- Mail Icon (Material Symbols) -->
+                    <span class="material-symbols-outlined input-icon">mail</span>
+                    <input type="email" id="email" placeholder="Your Email Address" required>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn-submit">Reset Password</button>
+
+            <!-- Back to Login Link -->
+            <div class="footer-link">
+                <a href="./index.html">Back to Login</a>
+            </div>
+        </form>
+
+    </div>
+
+</body>
+</html>

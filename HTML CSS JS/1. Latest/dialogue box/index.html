@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <title>Minimalistic Dark Alert</title>
+    <style>
+      :root {
+        --bg-primary: #202020;
+        --bg-secondary: #191919;
+        --text-light: #e0e0e0;
+        --text-muted: #aaaaaa;
+        --accent-close: #ff5555;
+        --border-color: #333333;
+        --shadow-color: rgba(0, 0, 0, 0.6);
+        --spacing-md: 10px;
+        --spacing-lg: 30px;
+      }
+
+      /* Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 100%;
+        min-height: 100%;
+        background-color: var(--bg-primary);
+        color: var(--text-light);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* Allow body scroll by removing 'overflow: hidden;' if content exists */
+      }
+
+      /* ALERT WRAPPER (Controls position and slide animation) */
+      .alert-wrapper {
+        /* FIX: Use fixed position so it stays visible on scroll */
+        position: fixed;
+        top: var(--spacing-lg);
+        /* Right position adjusted to account for the box width on slide-in */
+        right: 0; 
+        
+        /* Set initial off-screen position and full transition */
+        transform: translateX(100%);
+        opacity: 0;
+        transition: transform 0.6s ease-out, opacity 0.4s ease;
+        
+        /* Constrain the wrapper's actual width and use z-index */
+        width: 500px;
+        max-width: 90%;
+        z-index: 1000;
+        
+        /* Add right padding to create space from the edge */
+        padding-right: 4vw;
+      }
+
+      /* Slide-In State (Activated by JavaScript) */
+      .alert-wrapper.slide-in {
+        transform: translateX(0);
+        opacity: 1;
+      }
+
+      /* ALERT BOX (The visual container) */
+      .alert-wrapper .alert-box {
+        /* Remove redundant absolute positioning and simplify dimensions */
+        position: static;
+        width: 100%; 
+        
+        background-color: var(--bg-secondary);
+        border-radius: 8px;
+        box-shadow: 0 4px 15px var(--shadow-color);
+        /* Remove redundant transition here, the wrapper handles it */
+        transition: none;
+      }
+
+      /* Alert Header (Layout for title and button) */
+      .alert-wrapper .alert-header {
+        width: 100%;
+        padding: var(--spacing-md);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        
+        /* Minimalist Border */
+        /* border-bottom: 1px solid var(--border-color); */
+        
+        /* Responsive Text: Header */
+        font-size: clamp(1rem, 4vw, 1.25rem);
+        font-weight: 600; /* Slightly bolder for minimal look */
+      }
+
+      /* Alert Description */
+      .alert-wrapper .alert-desc {
+        color: #d7ba7d;
+        padding: var(--spacing-md);
+        /* Responsive Text: Description */
+        font-size: 0.9em;
+        padding: 20px;
+      }
+
+      /* Close Icon (Minimalistic Styling) */
+      .alert-wrapper .close-icons {
+        cursor: pointer;
+        font-size: 1.3em;
+        color: var(--text-muted);
+        margin-right: 5px;
+        transition: color 0.2s;
+        /* Aligns the icon nicely with the text */
+        line-height: 1; 
+      }
+      .alert-wrapper .close-icons:hover {
+        color: var(--accent-close);
+      }
+      
+      /* Close Animation State */
+      .alert-wrapper.closed {
+          opacity: 0;
+          transform: translateX(100%) !important; /* Forces slide-out */
+          pointer-events: none;
+      }
+      
+      /* Media Query for Small Screens */
+      @media (max-width: 480px) {
+        .alert-wrapper {
+            /* Reduce space from right edge */
+            padding-right: 3vw;
+        }
+        .alert-wrapper .alert-desc {
+          font-size: 0.8em;
+        }
+        .alert-wrapper .close-icons {
+          font-size: 1.1em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="alert-wrapper">
+      <div class="alert-box">
+        <h3 class="alert-header">
+          New Notification
+          <span class="material-symbols-outlined close-icons"> close </span>
+        </h3>
+        <p class="alert-desc">
+          This is a minimalistic, dark-themed alert box. It will slide in from the right 
+          and remain fixed on the screen.
+        </p>
+      </div>
+    </div>
+    
+    <div style="padding: 100px 50px;">
+        <h1 style="text-align: center;">Welcome to the Minimal Dark Page</h1>
+        <p style="margin-top: 20px; text-align: center;">The alert box is positioned absolutely/fixed relative to the viewport. It will stay in the corner if you scroll.</p>
+        <div style="height: 1000px; background-color: #2a2a2a; margin-top: 50px; padding: 20px; color: #ccc;">
+            Scroll down to confirm the alert box is fixed in the corner.
+        </div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>

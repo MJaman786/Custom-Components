@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            background-color: aliceblue;
+            /* transition: all 0.5s ease; */
+        }
+
+        .container {
+            min-height: 300px;
+            width: 100%;
+            background-color: aquamarine;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            padding: 15px 15px;
+        }
+
+        .child {
+            width: 100%;
+            height: 300px;
+            background-color: crimson;
+            border-radius: 10px;
+            /* flex: 1 1 auto; */
+        }
+
+        .btn-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+    </div>
+    <div class="btn-container">
+        <button style="padding: 10px; border-radius: 6px; border: 1px solid gray;">
+            Add child
+        </button>
+    </div>
+
+    <script>
+
+        let myList = [];
+
+        let container = document.querySelector('.container');
+        let button = document.querySelector('button');
+
+        // button.onclick = function myFunction(){
+        //     let newElement = document.createElement("div");
+        //     newElement.className = 'child';
+
+        //     container.appendChild(newElement)
+        // }
+
+
+
+        button.onclick = function myFunction() {
+            for (let i = 0; i < myList.length; i++) {
+                let newElement = document.createElement("div");
+                newElement.className = 'child';
+
+                // Set text content using data from myList
+                newElement.innerText = `Name: ${myList[i][0]}\nAge: ${myList[i][1]}\nDept: ${myList[i][2]}`;
+
+                // Append to the container
+                container.appendChild(newElement);
+            }
+        }
+
+        // setInterval(myFunction, 1500);
+    </script>
+</body>
+
+</html>

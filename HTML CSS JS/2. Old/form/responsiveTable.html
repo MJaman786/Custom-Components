@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Persistent Form with Delete</title>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid black;
+    }
+    button.delete-btn {
+      background-color: crimson;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <form id="userForm" style="margin: 10px 0px;">
+    <input type="text" id="name" placeholder="Enter name" required />
+    <input type="number" id="age" placeholder="Enter age" required />
+    <input type="text" id="department" placeholder="Enter Department" required />
+    <button type="submit">Submit</button>
+  </form>
+
+  <button class="show-btn">Show Data</button>
+
+  <table style="margin: 10px 0px;">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Department</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="userTableBody">
+      <!-- Users will be shown here -->
+    </tbody>
+  </table>
+
+  <script>
+    let myArray = [];
+
+    // Load existing data from localStorage on page load
+    window.onload = function () {
+      let stored = localStorage.getItem("userArray");
+      if (stored) {
+        myArray = JSON.parse(stored);
+        displayUsers();
+      }
+    };
+
+    let form = document.getElementById("userForm");
+    let tableBody = document.getElementById("userTableBody");
+
+    form.onsubmit = function (event) {
+      event.preventDefault();
+
+      // Get form values
+      let name = document.getElementById("name").value;
+      let age = document.getElementById("age").value;
+      let department = document.getElementById("department").value;
+
+      // Create user object
+      let user = {
+        Sname: name,
+        Sage: age,
+        Sdepartment: department
+      };
+
+      // Add to array and localStorage
+      myArray.push(user);
+      localStorage.setItem("userArray", JSON.stringify(myArray));
+
+      // Clear form
+      form.reset();
+
+      // Show updated table
+      displayUsers();
+    };
+
+    document.querySelector(".show-btn").addEventListener("click", displayUsers);
+
+    function displayUsers() {
+      tableBody.innerHTML = "";
+      for (let i = 0; i < myArray.length; i++) {
+        let tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${myArray[i].Sname}</td>
+          <td>${myArray[i].Sage}</td>
+          <td>${myArray[i].Sdepartment}</td>
+          <td><button class="delete-btn" onclick="deleteUser(${i})">Delete</button></td>
+        `;
+        tableBody.appendChild(tr);
+      }
+    }
+
+    function deleteUser(index) {
+      // Remove user from array
+      myArray.splice(index, 1);
+      // Update localStorage
+      localStorage.setItem("userArray", JSON.stringify(myArray));
+      // Refresh display
+      displayUsers();
+    }
+  </script>
+</body>
+</html>

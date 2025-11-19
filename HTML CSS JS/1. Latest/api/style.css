@@ -1,0 +1,75 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+}
+
+html,body{
+    width: 100%;
+    height: 100%;
+    background-color: #212121;
+    color: #fff;
+    font-family: 'Poppins';
+}
+
+header h1{
+    text-align: center;
+    padding: 20px 0px;
+}
+
+.main-container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+}
+
+.card-container{
+    width: 100%;
+    max-width: 500px;
+    background-color: #343434;
+    border-radius: 15px;
+    padding: 5px 5px;
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+
+.card-container:hover{
+    background-color: #212121;
+    transform: scale(1.02);
+}
+
+.card-container .card-head{
+    display: flex;
+    align-items: center;
+    /* background-color: aqua; */
+}
+
+.card-container .card-id{
+    /* background-color: #212121;
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center; */
+    color: yellow;
+}
+
+.card-container .card-id,
+.card-container .card-title{
+    padding: 10px;
+}
+
+.card-container .card-desc{
+    padding: 10px;
+}
